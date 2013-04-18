@@ -8,10 +8,10 @@ import com.blogspot.nhu313.mastermind.GameProperties;
 
 public class NewGameListener implements ActionListener {
 	
-	private TwoColorUI ui;
+	private DarkBlueUI ui;
 	private Game game;
 
-	public NewGameListener(Game game, TwoColorUI twoColorUI) {
+	public NewGameListener(Game game, DarkBlueUI twoColorUI) {
 		this.ui = twoColorUI;
 		this.game = game;
 	}
@@ -19,7 +19,6 @@ public class NewGameListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		game.newGame(GameProperties.CODE_SIZE);
-		ui.createGUI(game);
 		ui.drawNewUI(game);
 	}
 

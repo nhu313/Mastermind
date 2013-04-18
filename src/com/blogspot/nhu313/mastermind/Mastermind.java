@@ -1,6 +1,6 @@
 package com.blogspot.nhu313.mastermind;
 
-import com.blogspot.nhu313.mastermind.ui.TwoColorUI;
+import com.blogspot.nhu313.mastermind.ui.DarkBlueUI;
 
 public class Mastermind {
 	
@@ -8,7 +8,7 @@ public class Mastermind {
     	Game game = new Game();
     	game.newGame(GameProperties.CODE_SIZE);
 
-		TwoColorUI gui = new TwoColorUI();
+		DarkBlueUI gui = new DarkBlueUI();
 		gui.createGUI(game);
 		gui.displayGUI();
 	}

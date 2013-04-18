@@ -7,12 +7,12 @@ import com.blogspot.nhu313.mastermind.pattern.ResultCode;
 import com.blogspot.nhu313.mastermind.ui.ColorCode;
 
 public class Game {	
-	private Pattern pattern;
+	private Pattern secretCode;
 	private int numOfGuess;
 
 	public void newGame(int size) {
 		ColorCode[] colorCodes = getSecretColors(size);
-		pattern = new Pattern(colorCodes);
+		secretCode = new Pattern(colorCodes);
 		numOfGuess = 0;
 	}
 	
@@ -39,11 +39,11 @@ public class Game {
 			return null;
 		} else {
 			numOfGuess++;
-			return pattern.isSamePattern(guess);
+			return secretCode.isSamePattern(guess);
 		}
 	}
 	
 	public ColorCode[] getSecretColorPattern(){
-		return pattern.getSecretCode();
+		return secretCode.getSecretCode();
 	}
 }

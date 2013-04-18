@@ -21,9 +21,8 @@ public class Pattern {
 	}
 
 	/**
-	 * 
 	 * @param otherPattern
-	 * @return Result code that is sorted with the correct one in the fron
+	 * @return Result code that is sorted in the order of CORRECT, CORRECT_COLOR_ONLY, INCORRECT
 	 */
 	public List<ResultCode> isSamePattern(Pattern otherPattern) {
 		if (otherPattern.size() != this.size()){
