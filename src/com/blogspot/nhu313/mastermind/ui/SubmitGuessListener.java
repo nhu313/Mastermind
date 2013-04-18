@@ -1,10 +1,10 @@
 package com.blogspot.nhu313.mastermind.ui;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -23,40 +23,39 @@ public class SubmitGuessListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Button button = (Button) e.getSource();
+		final int codeSize = GameProperties.CODE_SIZE;
 		
-		JPanel row = (JPanel) button.getParent();
-		ColorCode[] colors = getColorCodes(row);
-		
-		ResultCode[] results = game.submitGuess(new Pattern(colors));
-		setResultCode(results, row);
-	}
+		Component submitButton = (Component) e.getSource();
 
-	private void setResultCode(ResultCode[] results, JPanel parent) {
-		JPanel resultBox = (JPanel) parent.getComponent(GameProperties.SIZE);
-		for (int i = 0; i < results.length; i++){
-			Component component = resultBox.getComponent(i);
-			ResultCode resultCode = results[i];
-			
-			if (resultCode == ResultCode.INCORRECT){
-				break;
-			}
-			
-			ColorCode color = null;
+		if (submitButton.isVisible()){
+			JPanel row = (JPanel) submitButton.getParent();
+			ColorCode[] colors = getColorCodes(row, codeSize);
 
-			if (resultCode == ResultCode.CORRECT){
-				color = ColorCode.GREEN;
-			} else if (resultCode == ResultCode.CORRECT_COLOR_ONLY){
-				color = ColorCode.YELLOW;
-			}
-			
-			component.setBackground(color.getColor());
+			List<ResultCode> results = game.submitGuess(new Pattern(colors));
+
+			JPanel resultPanel = (JPanel) row.getComponent(codeSize);
+			setResultCode(results, resultPanel);
+			submitButton.setVisible(false);
 		}
 	}
 
-	private ColorCode[] getColorCodes(JPanel row) {
-		ColorCode[] colors = new ColorCode[GameProperties.SIZE];
-		for (int i = 0; i < GameProperties.SIZE; i++){
+	protected void setResultCode(List<ResultCode> results, JPanel resultBox) {
+		int codeSize = results.size();
+		for (int i = 0; i < codeSize; i++){
+			Component component = resultBox.getComponent(i);
+			ResultCode resultCode = results.get(i);
+
+			if (resultCode == ResultCode.CORRECT){
+				component.setBackground(Color.BLACK);
+			} else if (resultCode == ResultCode.CORRECT_COLOR_ONLY){
+				component.setBackground(Color.WHITE);
+			}
+		}
+	}
+
+	protected ColorCode[] getColorCodes(JPanel row, int codeSize) {
+		ColorCode[] colors = new ColorCode[codeSize];
+		for (int i = 0; i < codeSize; i++){
 			Color color = row.getComponent(i).getBackground();
 			colors[i] = ColorCode.valueOf(color);
 		}

@@ -1,6 +1,6 @@
 package com.blogspot.nhu313.mastermind;
 
-import java.util.Arrays;
+import java.util.List;
 
 import com.blogspot.nhu313.mastermind.pattern.Pattern;
 import com.blogspot.nhu313.mastermind.pattern.ResultCode;
@@ -34,18 +34,16 @@ public class Game {
 		return (int) (randomNumber % size);
 	}
 
-	public ResultCode[] submitGuess(Pattern guess){
+	public List<ResultCode> submitGuess(Pattern guess){
 		if (numOfGuess >= GameProperties.MAX_GUESS){
 			return null;
 		} else {
-			numOfGuess++;		
-			ResultCode[] results = pattern.isSamePattern(guess);
-			Arrays.sort(results);
-			return results;
+			numOfGuess++;
+			return pattern.isSamePattern(guess);
 		}
 	}
-
-//	private ResultCode[] sortResult(ResultCode[] results) {
-//		Arrays.sort(results);
-//	}
+	
+	public ColorCode[] getSecretColorPattern(){
+		return pattern.getSecretCode();
+	}
 }

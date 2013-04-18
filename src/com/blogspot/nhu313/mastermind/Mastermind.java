@@ -6,7 +6,7 @@ public class Mastermind {
 	
 	public static void main(String[] args){
     	Game game = new Game();
-    	game.newGame(GameProperties.SIZE);
+    	game.newGame(GameProperties.CODE_SIZE);
 
 		TwoColorUI gui = new TwoColorUI();
 		gui.createGUI(game);

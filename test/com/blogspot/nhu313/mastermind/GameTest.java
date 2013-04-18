@@ -1,5 +1,8 @@
 package com.blogspot.nhu313.mastermind;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Assert;
@@ -44,29 +47,19 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testGuess(){
-		ResultCode[] expectedResult = new ResultCode[]{ResultCode.CORRECT, ResultCode.CORRECT};
-		Assert.assertArrayEquals(expectedResult, game.submitGuess(pattern));
+	public void testGuess_withCorrectResult(){
+		List<ResultCode> expectedResult = new ArrayList<ResultCode>();
+		expectedResult.add(ResultCode.CORRECT);
+		expectedResult.add(ResultCode.CORRECT);
+		Assert.assertEquals(expectedResult, game.submitGuess(pattern));
 	}
 	
 	@Test
-	public void testGuess_Incorrect(){
+	public void testGuess_withIncorrectResult(){
+		List<ResultCode> expectedResult = new ArrayList<ResultCode>();
+		expectedResult.add(ResultCode.INCORRECT);
+		expectedResult.add(ResultCode.INCORRECT);
 		Pattern pattern = new Pattern(ColorCode.BLACK, ColorCode.BLACK);
-		ResultCode[] expectedResult = new ResultCode[]{ResultCode.INCORRECT, ResultCode.INCORRECT};
-		Assert.assertArrayEquals(expectedResult, game.submitGuess(pattern));
-	}
-	
-//	@Test
-	public void testGuess_withMixResult(){
-		final int gameSize = 3;
-		game = EasyMock.createMockBuilder(Game.class).addMockedMethod("getRandomNumber").createStrictMock();
-		game.newGame(gameSize);
-		for (int i = 0; i < gameSize; i++){
-			EasyMock.expect(game.getRandomNumber(gameSize)).andReturn(i).once();
-		}
-		EasyMock.replay(game);
-		
-		//TODO
-//		EasyMock.verify(game);
-	}
+		Assert.assertEquals(expectedResult, game.submitGuess(pattern));
+	}	
 }

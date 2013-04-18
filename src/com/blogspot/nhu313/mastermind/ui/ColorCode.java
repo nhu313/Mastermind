@@ -3,12 +3,13 @@ package com.blogspot.nhu313.mastermind.ui;
 import java.awt.Color;
 
 public enum ColorCode {
-	BLUE(7,21,205), 
-	YELLOW(255,177,0), 
-	GREEN(31,148,0), 
-	RED(224,7,7), 
-	BLACK(0,0,0),
-	PURPLE(119,0,60);
+	BLUE(7, 21, 205), 
+	YELLOW(255, 177, 0), 
+	GREEN(31, 148, 0), 
+	RED(224, 7, 7), 
+	BLACK(0, 0, 0),
+	PURPLE(119, 0, 60), 
+	WHITE(255, 255, 255);
 	
 	private final Color color;
 	
