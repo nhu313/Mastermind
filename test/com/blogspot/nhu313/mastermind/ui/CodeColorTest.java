@@ -6,6 +6,8 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import com.blogspot.nhu313.mastermind.colorcode.ColorCode;
+
 public class CodeColorTest {
 
 	@Test

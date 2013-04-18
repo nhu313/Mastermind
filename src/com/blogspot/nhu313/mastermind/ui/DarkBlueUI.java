@@ -16,9 +16,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.blogspot.nhu313.mastermind.Game;
 import com.blogspot.nhu313.mastermind.GameProperties;
+import com.blogspot.nhu313.mastermind.colorcode.ColorCode;
+import com.blogspot.nhu313.mastermind.game.Game;
 import com.blogspot.nhu313.mastermind.game.GuessRow;
+import com.blogspot.nhu313.mastermind.listener.GuessColorListener;
+import com.blogspot.nhu313.mastermind.listener.NewGameListener;
+import com.blogspot.nhu313.mastermind.listener.RevealSecretCodeListener;
+import com.blogspot.nhu313.mastermind.listener.SubmitGuessListener;
 
 public class DarkBlueUI {
 	
@@ -73,7 +78,7 @@ public class DarkBlueUI {
 	}
 
 	private void addSecretColor(Game game, JPanel panel) {
-		ColorCode[] colors = game.getSecretColorPattern();
+		ColorCode[] colors = game.getSecretColorCode();
 		for (int i = 0; i < colors.length; i++){
 			JButton button = new JButton();
 			button.setVisible(false);
@@ -84,7 +89,7 @@ public class DarkBlueUI {
 
 	private JButton getRevealCode() {
 		JButton reveal = new JButton("Reveal Secret Code");
-		reveal.addActionListener(new RevealPatternListener());
+		reveal.addActionListener(new RevealSecretCodeListener());
 		return reveal;
 	}
 
