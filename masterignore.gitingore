@@ -1,7 +1,5 @@
 .gitignore
 
 #Eclipse files#
-.project
-.classpath
 .setting*
 bin/*
