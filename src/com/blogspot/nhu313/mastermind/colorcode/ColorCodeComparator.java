@@ -60,8 +60,7 @@ public class ColorCodeComparator {
 		int numberOfCorrectColorResult = 0;
 		for (int i = 0; i < original.size(); i++){
 			ColorCode code = original.get(i);
-			if (other.contains(code)){
-				other.remove(code);
+			if (other.remove(code)){
 				numberOfCorrectColorResult++;
 			}
 		}
