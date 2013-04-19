@@ -129,6 +129,19 @@ public class ColorCodeComparatorTest {
 		
 		Assert.assertEquals(resultCode, comparator.isSameColors(originalCode, otherCode));
 	}
+
+	@Test
+	public void testisSameColors_WithSameColor(){
+		resultCode.add(ResultCode.CORRECT);
+		resultCode.add(ResultCode.CORRECT_COLOR_ONLY);
+		resultCode.add(ResultCode.CORRECT_COLOR_ONLY);
+		resultCode.add(ResultCode.INCORRECT);
+
+		final ColorCode[] originalCode = new ColorCode[]{ColorCode.BLUE, ColorCode.GREEN, ColorCode.GREEN, ColorCode.GREEN};
+		final ColorCode[] otherCode = new ColorCode[]{ColorCode.GREEN, ColorCode.GREEN, ColorCode.BLACK, ColorCode.BLUE};
+		
+		Assert.assertEquals(resultCode, comparator.isSameColors(originalCode, otherCode));
+	}
 	
 	@Test
 	public void testRemoveSameItemInSamePosition(){
@@ -136,10 +149,8 @@ public class ColorCodeComparatorTest {
 		List<ColorCode> other = new ArrayList<ColorCode>();
 		
 		int listSize = 3;
-		for (int i = 0; i < listSize; i++){
-			original.add(ColorCode.BLACK);
-			other.add(ColorCode.BLACK);
-		}
+		addColors(original, listSize);
+		addColors(other, listSize);
 		
 		original.add(1, ColorCode.BLUE);
 		other.add(1, ColorCode.GREEN);
@@ -151,5 +162,11 @@ public class ColorCodeComparatorTest {
 		
 		Assert.assertEquals(1, original.size());
 		Assert.assertEquals(1, other.size());
+	}
+
+	private void addColors(List<ColorCode> colors, int listSize) {
+		for (int i = 0; i < listSize; i++){
+			colors.add(ColorCode.BLACK);
+		}
 	}
 }
