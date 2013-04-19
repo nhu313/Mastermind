@@ -1,6 +1,5 @@
 package com.blogspot.nhu313.mastermind.ui;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -58,7 +57,7 @@ public class DarkBlueUI {
         content.add(getColorSelections());
         content.add(getNewGame(game));
         
-        content.revalidate();
+        content.validate();
         content.repaint();
 	}
 
@@ -151,8 +150,9 @@ public class DarkBlueUI {
 
 	private void addGuessBox(JPanel rowPanel) {
 		for (int row = 0; row < GameProperties.CODE_SIZE; row++){
-			Button button = new Button();
+			JButton button = new JButton();
 			button.setPreferredSize(new Dimension(50, 50));
+
 			rowPanel.add(button);
 		}
 	}
