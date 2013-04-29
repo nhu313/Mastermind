@@ -7,6 +7,6 @@ This is a Java Mastermind game. See [wikipedia](http://en.wikipedia.org/wiki/Mas
 Run com.blogspot.nhu313.mastermind.<b>Mastermind</b> as a Java standone application.
  
 #RunTesting#
-The test files live in test. The package of the test files correspond to the package of the files they are testing. I used JUnit and EasyMock to create the tests. The jar needed for testing are in lib/test. 
+The test files live in test. The package of the test files correspond to the package of the files they are testing. I used JUnit and EasyMock to create the tests. The jars needed for testing are in lib/test. 
 
 To run the file, right click on the test file and run it as JUnit test. In Eclipse, if you want to run all of the test files, right click on the "test" folder, then select "Run As" > "Junit Test". 

@@ -33,6 +33,7 @@ public class ColorCodeComparatorTest {
 	@Test
 	public void testConstructor_WithNullColor(){
 		ColorCode[] colors = null;
+		//comment
 		Assert.assertNull(comparator.isSameColors(colors, colors));
 		Assert.assertNull(comparator.isSameColors(originalColorCode, colors));
 		Assert.assertNull(comparator.isSameColors(colors, originalColorCode));
